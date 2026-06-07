@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .bmi-value { font-weight: bold; }
+        .underweight { color: #3498db; }
+        .normal { color: #2ecc71; }
+        .overweight { color: #f39c12; }
+        .obese { color: #e74c3c; }
+
+        /* Clean stat text layout since progress bars are removed */
+        .stat-item {
+            font-size: 18px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 5px solid #ccc;
+        }
+        .stat-item.water { border-left-color: #3498db; }
+        .stat-item.exercise { border-left-color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <div class="report-card" style="text-align: left; margin: auto;">
+        <h1>🌿 Health Dashboard for {{ name }} 🌿</h1>
+        <p style="font-size: 16px; color: #666;">Age: {{ age }}</p>
+
+        <p class="bmi-value {{ category|lower }}" style="font-size: 22px; margin: 20px 0;">
+            BMI: {{ bmi }} ({{ category }})
+        </p>
+
+        <div class="stat-item water">
+            <strong>💧 Water Intake:</strong> {{ water }} Liters
+        </div>
+
+        <div class="stat-item exercise">
+            <strong>🏃 Daily Exercise:</strong> {{ exercise }} Minutes
+        </div>
+
+        <p class="tip">✨ Tip: {{ tip }}</p>
+    </div>
+</body>
+</html>
